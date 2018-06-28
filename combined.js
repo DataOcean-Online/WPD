@@ -6587,9 +6587,11 @@ wpd.zoomView = (function() {
         zoomRatio = document.getElementById('zoom-magnification-value').value;
         crosshairColorText = document.getElementById('zoom-crosshair-color-value').value;
         pointRadius = document.getElementById('data-point-size').value;
-	alphaChannel = document.getElementById('alpha-channel').value;
+	alphaChannel = document.getElementById('alpha-channel').value;        
         drawCrosshair();
         wpd.popup.close('zoom-settings-popup');
+        if (wpd.appData.getPlotData().getAxesForDataset(wpd.tree.getActiveDataset()) == null) { return; }
+        wpd.acquireData.load();
     }
 
     return {
